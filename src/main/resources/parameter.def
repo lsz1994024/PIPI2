@@ -1,0 +1,81 @@
+# 2.0
+# First line is the parameter file version. Don't change it.
+thread_num = 0 # Thread number. Set to 0 to using all the CPU resources in the computer.
+# Database
+db = proteins.fasta # Protein database
+
+database_type = Others # Different types have different fasta header patterns. Available values: UniProt, SwissProt, TAIR, ITAG, RefSeq, Others
+add_decoy = 1          # 0 = don't generate and search decoy sequences automatically; 1 = generate and search decoy sequences
+add_contaminant = 1     # 0 = don't add contaminant proteins automatically; 1 = add contaminant proteins
+missed_cleavage = 2     # Maximum number of allowed missed cleavage.l
+min_peptide_length = 6  # Minimum length of a peptide chain.
+max_peptide_length = 35 # Maximum length of a peptide chain.
+
+# Spectrum
+ms_level = 2 # The searched MS level.
+
+# Tolerance
+ms1_tolerance_unit = 1 # 0: Da; 1: ppm
+ms1_tolerance = 10
+ms2_tolerance = 0.01 # Unit is Da. e.g. high-resolution MS/MS: 0.01; low-resolution MS/MS: 0.5
+mz_bin_offset = 0 # Offset in digitization the spectrum. e.g. high-resolution MS/MS: 0; low-resolution MS/MS: 0.4
+min_clear_mz = 112.5 # Clear out all peaks in the specified m/z range, mainly for iTRAQ/TMT data.
+max_clear_mz = 121.5
+
+minTagLenToExtract = 3
+maxTagLenToExtract = 99
+nTermSpecific = true
+MIN_PEAK_SUM_INFER_AA = 0.0
+proteinCovThres = 0.1
+maxNumVarPtmConsidered = 1
+
+# Modification related
+min_ptm_mass = -250 # Min allowed PTM mass.
+max_ptm_mass = 250 # Max allowed PTM mass.
+
+# Isotopic labelling strategy
+15N = 0 # 1: 15N. 0: 14N.
+
+# Considered modifications in generating tags.
+# Maximum number is 9.
+# Empty entries must start with 0.0.
+# Please only specify enriched PTM and chemical labelling PTM.
+mod01 = 15.994915,M,4,Oxidation
+
+# Fix modification
+G = 0
+A = 0
+S = 0
+P = 0
+V = 0
+T = 0
+C = 57.02146
+I = 0
+L = 0
+N = 0
+D = 0
+Q = 0
+K = 0
+E = 0
+M = 0
+H = 0
+F = 0
+R = 0
+Y = 0
+W = 0
+O = 0 # Pyrrolysine
+U = 0 # Selenocysteine
+n = 0 # nterm mod
+c = 0 # cterm mod
+
+# Enzyme digestion specifications. Support up to two enzymes simultaneously.
+# enzyme name  	 is cut from C-term 	 cleavage site 	 protection site
+ Trypsin        	 1                  	 KR            	 P
+# Trypsin/P      1                  	 KR            	 -
+# TrypsinR     	 1                  	 R             	 P
+# LysC         	 1                  	 K             	 P
+# ArgC         	 1                  	 R             	 P
+# Chymotrypsin 	 1                  	 FYWL          	 P
+# GluC         	 1                  	 DE            	 P
+# LysN         	 0                  	 K             	 -
+# AspN         	 0                  	 D            	 -
